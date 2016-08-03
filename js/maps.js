@@ -49,4 +49,60 @@ function initialize()
             ]
         }
     ]);
+    
+    //cimkek mutatasa csak sattelite nezetben
+    map.addListener('maptypeid_changed', function() {
+        if(map.getMapTypeId() === "roadmap"){
+            map.set('styles', [
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [
+                        { color: '#FFFFFF' }
+                    ]
+                }, {
+                    featureType: 'poi',
+                    elementType: 'geometry',
+                    stylers: [
+                        { color: '#FFB9B9' }
+                    ]
+                }, {
+                    featureType: "all",
+                    elementType: "labels",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                }, {
+                    featureType: 'landscape',
+                    elementType: 'geometry',
+                    stylers: [
+                        { color: '#FFD5D5' }
+                    ]
+                }
+            ]);
+        } else {
+            map.set('styles', [
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [
+                        { color: '#FFFFFF' }
+                    ]
+                }, {
+                    featureType: 'poi',
+                    elementType: 'geometry',
+                    stylers: [
+                        { color: '#FFB9B9' }
+                    ]
+                }, {
+                    featureType: 'landscape',
+                    elementType: 'geometry',
+                    stylers: [
+                        { color: '#FFD5D5' }
+                    ]
+                }
+            ]);
+
+        }
+     });
 }
